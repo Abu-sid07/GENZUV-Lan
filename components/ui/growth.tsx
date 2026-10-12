@@ -172,7 +172,8 @@ export default function Growth({
   return (
     <LazyMotion features={domAnimation}>
       <section
-        className={`relative bg-white px-8 max-md:pt-10 max-md:pb-25 md:py-20 ${className}`}
+        id="growth"
+        className={`relative bg-[#FAF8F5] px-8 max-md:pt-10 max-md:pb-25 md:py-20 ${className}`}
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.08]"
@@ -182,8 +183,8 @@ export default function Growth({
             marginTop: "4px",
           }}
         />
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-white" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-white" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#FAF8F5]" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#FAF8F5]" />
 
         <div className="relative z-10 mx-auto max-w-6xl">
           <header className="mx-auto mb-12 max-w-2xl text-center">

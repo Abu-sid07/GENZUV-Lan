@@ -39,7 +39,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="bg-white py-24 text-slate-900 sm:py-32">
+    <section id="portfolio" className="border-b border-[#D9D3C5] bg-[#FAF8F5] py-24 text-slate-900 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">

@@ -147,7 +147,7 @@ function ServiceCard({
 
 export default function ServiceCards() {
   return (
-    <section className="border-b border-[#D9D3C5] bg-white px-6 py-16 sm:py-20">
+    <section id="services" className="border-b border-[#D9D3C5] bg-[#FAF8F5] px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-[1200px]">
         <header className="mb-12 max-w-[720px] sm:mb-16">
           <h2 className="font-heading text-3xl leading-[1.08] tracking-[-0.035em] text-[#292722] sm:text-4xl">

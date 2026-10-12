@@ -64,7 +64,7 @@ const AboutUs: React.FC = () => {
   return (
     <section
       id="about"
-      className="w-full border-b border-[#D9D3C5] bg-[#fffff] px-6 py-20 font-['DM_Sans'] md:px-16 md:py-[120px]"
+      className="w-full border-b border-[#D9D3C5] bg-[#FAF8F5] px-6 py-20 font-['DM_Sans'] md:px-16 md:py-[120px]"
     >
       <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap');`}</style>
 

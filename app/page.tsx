@@ -3,6 +3,7 @@ import Hero from "@/components/ui/hero";
 import About from "@/components/ui/About";
 import Testimonials from "@/components/ui/testimonials";
 import Growth from "@/components/ui/growth";
+import Industries from "@/components/ui/industries";
 import Projects from "@/components/ui/projects";
 import ServiceCards from "@/components/ui/service-cards";
 import Team from "@/components/ui/team";
@@ -18,6 +19,7 @@ export default function Home() {
         <About />
         <ServiceCards />
         <Growth />
+        <Industries />
         <Projects />
         <Team />
         <Testimonials />

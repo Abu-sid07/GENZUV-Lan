@@ -13,6 +13,10 @@
   --font-serif: var(--font-dm-serif);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #FAF8F5;
   color: #171717;

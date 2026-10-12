@@ -10,8 +10,8 @@ const NAV_LINKS = [
   { name: "Industries", href: "#industries" },
   { name: "Portfolio", href: "#portfolio" },
   { name: "Team", href: "#team" },
-  { name: "Blog", href: "#blog" },
-  { name: "FAQ", href: "#faq" },
+  // { name: "Blog", href: "#blog" },
+  // { name: "FAQ", href: "#faq" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "Contact", href: "#contact" },
 ];
@@ -38,11 +38,10 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className={`relative py-1 text-[13.5px] font-medium transition-colors duration-150 ${
-                link.active
+              className={`relative py-1 text-[13.5px] font-medium transition-colors duration-150 ${link.active
                   ? "text-[#5252CF]"
                   : "text-neutral-700 hover:text-neutral-950"
-              }`}
+                }`}
             >
               {link.name}
               {link.active && (
@@ -96,11 +95,10 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`py-1 text-sm font-medium ${
-                  link.active
+                className={`py-1 text-sm font-medium ${link.active
                     ? "font-semibold text-[#4F46E5]"
                     : "text-neutral-700 hover:text-neutral-900"
-                }`}
+                  }`}
               >
                 {link.name}
               </a>

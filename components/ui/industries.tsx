@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ProjectShowcase } from "@/components/ui/project-showcase";
 
 const INDUSTRIES = [
   {
@@ -32,6 +33,23 @@ const INDUSTRIES = [
     description: "Losing neighborhood visibility to competitors with better Google map setups.",
   },
 ];
+
+const INDUSTRY_IMAGES: Record<(typeof INDUSTRIES)[number]["title"], string> = {
+  "Real Estate":
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=640&q=80",
+  "Schools and Coaching":
+    "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=640&q=80",
+  Healthcare:
+    "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=640&q=80",
+  Retail:
+    "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=640&q=80",
+  Startups:
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=640&q=80",
+  SMEs:
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=640&q=80",
+  "Local Businesses":
+    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=640&q=80",
+};
 
 export default function Industries() {
   return (
@@ -72,39 +90,13 @@ export default function Industries() {
 
             {/* Right Column: List of 7 Industries */}
             <div className="border-t border-[#D9D3C5] lg:col-span-7 lg:border-t-0">
-              <ul className="divide-y divide-[#D9D3C5]">
-                {INDUSTRIES.map((item) => (
-                  <li key={item.title}>
-                    <a
-                      href="#contact"
-                      className="group flex items-center justify-between py-5 transition-colors duration-150 hover:bg-neutral-100/30 sm:py-6"
-                    >
-                      <div className="pr-4">
-                        <h3 className="font-serif text-lg font-medium text-[#171717] sm:text-[19px]">
-                          {item.title}
-                        </h3>
-                        <p className="mt-1 text-xs leading-relaxed text-[#615F5B] sm:text-[13.5px]">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      <div className="shrink-0 pl-2 text-neutral-400 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-[#171717]">
-                        <svg
-                          className="h-4 w-4"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="9 18 15 12 9 6" />
-                        </svg>
-                      </div>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <ProjectShowcase
+                items={INDUSTRIES.map((item) => ({
+                  ...item,
+                  image: INDUSTRY_IMAGES[item.title],
+                  href: "#contact",
+                }))}
+              />
             </div>
           </div>
         </div>

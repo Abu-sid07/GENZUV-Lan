@@ -141,12 +141,12 @@ export default function Footer() {
                 <a href="#team" className="text-[#5F5C56] transition-colors hover:text-[#19181A]">
                   Team
                 </a>
-                <a href="#blog" className="text-[#5F5C56] transition-colors hover:text-[#19181A]">
+                {/* <a href="#blog" className="text-[#5F5C56] transition-colors hover:text-[#19181A]">
                   Blog
                 </a>
                 <a href="#faq" className="text-[#5F5C56] transition-colors hover:text-[#19181A]">
                   FAQ
-                </a>
+                </a> */}
                 <a href="#industries" className="text-[#5F5C56] transition-colors hover:text-[#19181A]">
                   Industries
                 </a>

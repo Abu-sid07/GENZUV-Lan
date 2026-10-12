@@ -6,7 +6,7 @@ import { LazyMotion, domAnimation, m } from "motion/react";
 export default function Hero() {
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative w-full overflow-hidden bg-[#FAF8F5] px-6 pt-16 pb-28 text-center sm:pt-24 sm:pb-36 md:pt-28 md:pb-40">
+      <section id="home" className="relative w-full overflow-hidden bg-[#FAF8F5] px-6 pt-16 pb-28 text-center sm:pt-24 sm:pb-36 md:pt-28 md:pb-40">
         <div className="mx-auto max-w-[1200px]">
           {/* Main Headline */}
           <m.h1

@@ -1,15 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const NAV_LINKS = [
-  { name: "Home", href: "#", active: true },
+  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
   { name: "Growth System", href: "#growth" },
   { name: "Industries", href: "#industries" },
   { name: "Portfolio", href: "#portfolio" },
-  { name: "Team", href: "#team" },
   // { name: "Blog", href: "#blog" },
   // { name: "FAQ", href: "#faq" },
   { name: "Testimonials", href: "#testimonials" },
@@ -18,9 +17,40 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState("#home");
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map((link) =>
+      document.querySelector<HTMLElement>(link.href)
+    ).filter((section): section is HTMLElement => section !== null);
+
+    const updateActiveSection = () => {
+      const activationLine = 120;
+      const currentSection = sections.find((section) => {
+        const bounds = section.getBoundingClientRect();
+        return bounds.top <= activationLine && bounds.bottom > activationLine;
+      });
+
+      if (currentSection?.id) {
+        setActiveHref(`#${currentSection.id}`);
+      } else if (window.scrollY < 120) {
+        setActiveHref("#home");
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
 
   return (
-    <header className="w-full bg-[#FAF8F5]">
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 w-full bg-[#FAF8F5]">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 sm:px-10 lg:px-14">
         {/* Brand / Logo */}
         <a href="#" className="flex flex-col items-start select-none">
@@ -38,14 +68,16 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className={`relative py-1 text-[13.5px] font-medium transition-colors duration-150 ${link.active
-                  ? "text-[#5252CF]"
+              aria-current={activeHref === link.href ? "location" : undefined}
+              className={`relative py-1 text-[13.5px] font-medium transition-colors duration-150 ${
+                activeHref === link.href
+                  ? "text-[#171717]"
                   : "text-neutral-700 hover:text-neutral-950"
-                }`}
+              }`}
             >
               {link.name}
-              {link.active && (
-                <span className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full bg-[#5252CF]" />
+              {activeHref === link.href && (
+                <span className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full bg-black" />
               )}
             </a>
           ))}
@@ -95,10 +127,12 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`py-1 text-sm font-medium ${link.active
-                    ? "font-semibold text-[#4F46E5]"
+                aria-current={activeHref === link.href ? "location" : undefined}
+                className={`relative w-fit py-1 text-sm font-medium ${
+                  activeHref === link.href
+                    ? "font-semibold text-[#171717] after:absolute after:right-0 after:bottom-0 after:left-0 after:h-[2px] after:bg-black"
                     : "text-neutral-700 hover:text-neutral-900"
-                  }`}
+                }`}
               >
                 {link.name}
               </a>
@@ -106,6 +140,8 @@ export default function Navbar() {
           </nav>
         </div>
       )}
-    </header>
+      </header>
+      <div aria-hidden="true" className="h-24 shrink-0" />
+    </>
   );
 }

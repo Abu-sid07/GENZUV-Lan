@@ -5,6 +5,8 @@ import Testimonials from "@/components/ui/testimonials";
 import Growth from "@/components/ui/growth";
 import Projects from "@/components/ui/projects";
 import ServiceCards from "@/components/ui/service-cards";
+import Contact from "@/components/ui/contact";
+import Footer from "@/components/ui/footer";
 
 export default function Home() {
   return (
@@ -17,7 +19,9 @@ export default function Home() {
         <Growth />
         <Projects />
         <Testimonials />
+        <Contact />
       </main>
+      <Footer />
     </>
   );
 }

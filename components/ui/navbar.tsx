@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { name: "Home", href: "#home" },
@@ -53,12 +54,22 @@ export default function Navbar() {
       <header className="fixed inset-x-0 top-0 z-50 w-full bg-[#FAF8F5]">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 sm:px-10 lg:px-14">
         {/* Brand / Logo */}
-        <a href="#" className="flex flex-col items-start select-none">
-          <span className="font-serif text-2xl font-medium tracking-tight text-[#171717] sm:text-[26px]">
-            GENZ UV
-          </span>
-          <span className="text-[9px] font-bold tracking-[0.25em] text-[#5252CF] uppercase">
-            ULTIMATE VALUES
+        <a href="#" className="flex items-center gap-3 select-none">
+          <Image
+            src="/Logo-main.png"
+            alt="GENZ UV logo"
+            width={48}
+            height={48}
+            className="h-11 w-11 rounded-lg object-cover shadow-sm"
+            priority
+          />
+          <span className="flex flex-col items-start leading-none">
+            <span className="font-serif text-2xl font-medium tracking-tight text-[#171717] sm:text-[26px]">
+              GENZ UV
+            </span>
+            <span className="mt-1 text-[9px] font-bold tracking-[0.25em] text-[#5252CF] uppercase">
+              ULTIMATE VALUES
+            </span>
           </span>
         </a>
 

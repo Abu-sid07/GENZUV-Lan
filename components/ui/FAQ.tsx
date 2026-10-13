@@ -117,7 +117,7 @@ export default function FAQ() {
           </div>
 
           <a
-            href="https://wa.me/919566160862"
+            href="https://wa.me/919566180862"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-0 inline-flex w-fit items-center gap-2 rounded-sm bg-[#1EA952] px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#189146] md:col-span-5 md:col-start-1 md:row-start-2 md:self-end"

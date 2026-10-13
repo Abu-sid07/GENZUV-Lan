@@ -30,7 +30,7 @@ export default function Footer() {
               <p className="text-xs text-[#A8A49C]">
                 Phone:{" "}
                 <a
-                  href="tel:+919566160862"
+                  href="tel:+919566180862"
                   className="font-medium text-white underline decoration-neutral-600 hover:decoration-white"
                 >
                   +91 9566180862

@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { name: "Industries", href: "#industries" },
   { name: "Portfolio", href: "#portfolio" },
   // { name: "Blog", href: "#blog" },
-  // { name: "FAQ", href: "#faq" },
+  { name: "FAQ", href: "#faq" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "Contact", href: "#contact" },
 ];

@@ -7,6 +7,7 @@ import Industries from "@/components/ui/industries";
 import Projects from "@/components/ui/projects";
 import ServiceCards from "@/components/ui/service-cards";
 import Team from "@/components/ui/team";
+import FAQ from "@/components/ui/FAQ";
 import Contact from "@/components/ui/contact";
 import Footer from "@/components/ui/footer";
 
@@ -23,6 +24,7 @@ export default function Home() {
         <Projects />
         {/* <Team /> */}
         <Testimonials />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

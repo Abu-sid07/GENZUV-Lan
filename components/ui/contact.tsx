@@ -15,16 +15,46 @@ export default function Contact() {
     consent: true,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.phone) {
+    if (
+      !formData.fullName.trim() ||
+      !formData.phone.trim() ||
+      !formData.consent
+    ) {
       setFormState("validation_error");
       return;
     }
+
     setFormState("loading");
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to send enquiry.");
+      }
+
       setFormState("success");
-    }, 1200);
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        service: "Digital Marketing",
+        projectDetails: "",
+        consent: true,
+      });
+    } catch (error) {
+      console.error("Contact form error:", error);
+      setFormState("failure");
+    }
   };
 
   return (
@@ -45,34 +75,6 @@ export default function Contact() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
             {/* Left: Form */}
             <div className="lg:col-span-7">
-              {/* Form State Preview Bar (Interactive) */}
-              <div className="mb-8 flex flex-wrap items-center gap-2 rounded-xl bg-[#EDE8DE] p-2 text-xs">
-                <span className="px-2 font-bold tracking-wider text-[#615F5B] uppercase text-[10px]">
-                  FORM STATE PREVIEW:
-                </span>
-                {(
-                  [
-                    { id: "default", label: "Default" },
-                    { id: "validation_error", label: "Validation Error" },
-                    { id: "loading", label: "Loading" },
-                    { id: "success", label: "Success" },
-                    { id: "failure", label: "Failure" },
-                  ] as const
-                ).map((tab) => (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setFormState(tab.id)}
-                    className={`rounded-lg px-2.5 py-1 font-medium transition-all duration-150 ${formState === tab.id
-                      ? "bg-white text-[#19181A] shadow-xs"
-                      : "text-[#66635D] hover:text-[#19181A]"
-                      }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-
               {/* Success Message Banner */}
               {formState === "success" && (
                 <div className="mb-6 rounded-xl border border-emerald-300 bg-emerald-50/80 p-4 text-emerald-800">

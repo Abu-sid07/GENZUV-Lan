@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 
 type Testimonial = {
   text: string;
@@ -31,7 +32,14 @@ const TestimonialsColumn = ({
         >
           <p className="text-slate-700">{testimonial.text}</p>
           <div className="mt-5 flex items-center gap-3">
-            <img src={testimonial.image} alt="" className="h-10 w-10 rounded-full object-cover ring-2 ring-slate-200" />
+            <Image
+              src={testimonial.image}
+              alt=""
+              width={40}
+              height={40}
+              loading="lazy"
+              className="h-10 w-10 shrink-0 rounded-full object-cover object-center ring-2 ring-slate-200"
+            />
             <div>
               <p className="font-semibold text-slate-900">{testimonial.name}</p>
               <p className="text-sm text-slate-500">{testimonial.role}</p>
@@ -46,49 +54,49 @@ const TestimonialsColumn = ({
 const testimonials: Testimonial[] = [
   {
     text: "TThe elegant interface and engaging animations enhance learning, while clear navigation makes finding courses incredibly easy.",
-    image: "https://cdn.21st.dev/assets/mirror/7c/7c408d5bb79392ba04b0b8a6294b4eee47a16ec377d3dae0c3108e918864bfad.jpg",
+    image: "/feedback/William%20Richard%20Forbish.jpg",
     name: "Khaja Sir",
     role: "English Fluency Guide",
   },
   {
     text: "Stunning visuals and fluid animations make the website memorable, while effortless enrollment encourages students to get started.",
-    image: "https://cdn.21st.dev/assets/mirror/71/716cfb40836039a4e9e34d89320b6398ba7871ea7882e32b7397029586f6dda7.jpg",
+    image: "/feedback/Image%20Icon%20Male%20_%20Evolve%20Tradings%20Private%20Limited%20(India)%20_%20RRK%20Digiverse.jpg",
     name: "Noorul Ameen",
     role: "Supporting Staff",
   },
   {
     text: "The clean layout makes every course easy to discover, and the seamless registration process creates a delightful experience.",
-    image: "https://cdn.21st.dev/assets/mirror/7a/7ae9db9990bb424cc1cf68b6af248e7b88e7add27109a6d951eb5b4f881eda98.jpg",
+    image: "/feedback/812266482822759492.jpg",
     name: "Abdullah",
     role: "Current Student",
   },
   {
     text: "The modern design and intuitive navigation make exploring courses enjoyable, while registration takes only minutes without hassle.",
-    image: "https://cdn.21st.dev/assets/mirror/d1/d1db668ef30403e132bab1de4720f1c9159e8ba03dc0f3d65d5bf95f3985b80a.jpg",
+    image: "/feedback/802344489885222663.jpg",
     name: "Musthakeem",
     role: "Old Batch Student",
   },
   {
     text: "Beautiful UI and smooth animations create an engaging experience, while the simple enrollment process makes registration effortless.",
-    image: "https://cdn.21st.dev/assets/mirror/9e/9ef716cb49c8a7e58c27a65358d91e806a1d4c8579a128772a5d9d09d62cb113.jpg",
+    image: "/feedback/William%20Richard%20Forbish.jpg",
     name: "Kabeer Sir",
     role: "Academy Coordinator",
   },
   {
     text: "The organized layout and attractive design make course details easy to understand, creating a smooth registration experience.",
-    image: "https://cdn.21st.dev/assets/mirror/7f/7f2f1b6a4c09f5092437fe960232360d1e2dcf7a198c8580f3c5478c7b2d9386.jpg",
+    image: "/feedback/Image%20Icon%20Male%20_%20Evolve%20Tradings%20Private%20Limited%20(India)%20_%20RRK%20Digiverse.jpg",
     name: "Ahamed Rizwan",
     role: "Student",
   },
   {
     text: "The professional design, smooth transitions, and simple navigation help students explore courses and begin learning confidently.",
-    image: "https://cdn.21st.dev/assets/mirror/f2/f25b1b7a6a351c0f748d81bf4fcaf8c5a2f8ed036563c2693d4c1ca3718d9d5d.jpg",
+    image: "/feedback/812266482822759492.jpg",
     name: "Ibrahim Farook",
     role: "Parent",
   },
   {
     text: "Beautiful visuals and seamless interactions create a polished experience, making course discovery and enrollment simple and enjoyable.",
-    image: "https://cdn.21st.dev/assets/mirror/41/417105f5784df0a25c3486becfe5c967d448e3c98b3c0231ef4ea0c59d27cb4b.jpg",
+    image: "/feedback/802344489885222663.jpg",
     name: "mohammed Haneef",
     role: "English professor",
   },

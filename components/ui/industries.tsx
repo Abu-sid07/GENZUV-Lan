@@ -57,9 +57,9 @@ export default function Industries() {
       <div className="mx-auto max-w-[1240px]">
         {/* Main Card Wrapper */}
         <div className="rounded-[28px] border border-[#D9D3C5] bg-white/75 p-8 shadow-xs backdrop-blur-sm sm:p-12 md:p-16">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-            {/* Left Column: Heading, Subtitle & CTA */}
-            <div className="flex flex-col justify-between lg:col-span-5">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-16">
+            {/* Left Column: Heading and Subtitle */}
+            <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
               <div>
                 <h2 className="font-serif text-3xl font-normal tracking-tight text-[#171717] sm:text-4xl md:text-[46px] md:leading-[1.14]">
                   Built for Businesses
@@ -70,26 +70,10 @@ export default function Industries() {
                   We work with seven types of businesses. Here is the problem we help each one solve.
                 </p>
               </div>
-
-              {/* Discuss CTA Button linking directly to #contact */}
-              <div className="mt-8 pt-4 lg:mt-0">
-                <a
-                  href="#contact"
-                  className="group inline-flex items-center gap-2 text-sm font-semibold text-[#171717] underline decoration-[#171717] underline-offset-4 transition-colors hover:text-neutral-600 hover:decoration-neutral-600 sm:text-base"
-                >
-                  <span>Discuss Your Business</span>
-                  <span
-                    aria-hidden="true"
-                    className="transition-transform duration-200 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
-                </a>
-              </div>
             </div>
 
             {/* Right Column: List of 7 Industries */}
-            <div className="border-t border-[#D9D3C5] lg:col-span-7 lg:border-t-0">
+            <div className="border-t border-[#D9D3C5] lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1 lg:border-t-0">
               <ProjectShowcase
                 items={INDUSTRIES.map((item) => ({
                   ...item,
@@ -97,6 +81,22 @@ export default function Industries() {
                   href: "#contact",
                 }))}
               />
+            </div>
+
+            {/* Discuss CTA Button linking directly to #contact */}
+            <div className="lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-end">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-[#171717] underline decoration-[#171717] underline-offset-4 transition-colors hover:text-neutral-600 hover:decoration-neutral-600 sm:text-base"
+              >
+                <span>Discuss Your Business</span>
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </a>
             </div>
           </div>
         </div>

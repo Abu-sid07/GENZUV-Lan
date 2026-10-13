@@ -268,7 +268,7 @@ export default function Contact() {
                 <div className="mt-6 space-y-3">
                   {/* Phone */}
                   <a
-                    href="tel:+919566180862"
+                    href="tel:+91 9566180862"
                     className="flex items-center gap-4 rounded-xl bg-[#EDE8DE] p-3.5 transition-colors duration-150 hover:bg-[#E5DFD4]"
                   >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#19181A]">
@@ -281,7 +281,7 @@ export default function Contact() {
                         PHONE
                       </span>
                       <span className="text-sm font-semibold text-[#19181A]">
-                        +919566180862
+                        +91 9566180862
                       </span>
                     </div>
                   </a>
@@ -303,7 +303,7 @@ export default function Contact() {
                         WHATSAPP
                       </span>
                       <span className="text-sm font-semibold text-[#19181A]">
-                        +919566180862
+                        +91 9566180862
                       </span>
                     </div>
                   </a>
@@ -363,7 +363,7 @@ export default function Contact() {
                 </a>
 
                 <a
-                  href="tel:+919566180862"
+                  href="tel:+91 9566180862"
                   className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#3E3C38] bg-transparent py-3 text-sm font-medium text-[#19181A] transition-all duration-200 hover:bg-white/60"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

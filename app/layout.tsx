@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces, DM_Serif_Display } from "next/font/google";
+import SmoothScroll from "@/components/ui/smooth-scroll";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -33,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${dmSans.variable} ${fraunces.variable} ${dmSerif.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

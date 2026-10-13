@@ -51,7 +51,7 @@ export default function Hero() {
           >
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/+91 9566180862"
+              href="https://wa.me/+919566180862"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 rounded-lg bg-[#1EA952] px-6 py-3.5 text-[15px] font-medium text-white shadow-sm transition-all duration-200 hover:bg-[#189146] hover:shadow-md focus:outline-none"
@@ -69,7 +69,7 @@ export default function Hero() {
 
             {/* Call Us Now Button */}
             <a
-              href="tel:+91 9566180862"
+              href="tel:+919566180862"
               className="inline-flex items-center gap-2.5 rounded-lg border border-[#3E3C38] bg-transparent px-6 py-3.5 text-[15px] font-medium text-[#1A1918] transition-all duration-200 hover:bg-white/60 focus:outline-none"
             >
               <svg

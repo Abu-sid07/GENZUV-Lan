@@ -3,6 +3,7 @@
 import React from "react";
 import { LazyMotion, domAnimation, m } from "motion/react";
 
+
 export default function Hero() {
   return (
     <LazyMotion features={domAnimation}>

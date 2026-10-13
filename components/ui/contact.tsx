@@ -281,7 +281,7 @@ export default function Contact() {
                         PHONE
                       </span>
                       <span className="text-sm font-semibold text-[#19181A]">
-                        +919566180862
+                        +91 9566180862
                       </span>
                     </div>
                   </a>
@@ -303,7 +303,7 @@ export default function Contact() {
                         WHATSAPP
                       </span>
                       <span className="text-sm font-semibold text-[#19181A]">
-                        +919566180862
+                        +91 9566180862
                       </span>
                     </div>
                   </a>

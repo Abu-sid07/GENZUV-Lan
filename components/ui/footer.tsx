@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,12 +9,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
           {/* Brand Info & Address */}
           <div className="lg:col-span-5">
-            <a href="#" className="flex flex-col items-start leading-none select-none">
-              <span className="font-serif text-2xl font-medium tracking-tight text-white sm:text-[26px]">
-                GENZ UV
-              </span>
-              <span className="mt-1 text-[9px] font-bold tracking-[0.25em] text-[#818CF8] uppercase">
-                ULTIMATE VALUES
+            <a href="#" className="flex items-center gap-3 leading-none select-none">
+              <Image
+                src="/Logo-main.png"
+                alt="GENZ UV logo"
+                width={56}
+                height={56}
+                className="h-12 w-12 rounded-lg object-cover shadow-sm"
+              />
+              <span className="flex flex-col items-start">
+                <span className="font-serif text-2xl font-medium tracking-tight text-white sm:text-[26px]">
+                  GENZ UV
+                </span>
+                <span className="mt-1 text-[9px] font-bold tracking-[0.25em] text-[#818CF8] uppercase">
+                  ULTIMATE VALUES
+                </span>
               </span>
             </a>
             <p className="mt-4 max-w-sm text-xs leading-relaxed text-[#A8A49C]">

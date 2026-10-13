@@ -6,6 +6,7 @@ type FormState = "default" | "validation_error" | "loading" | "success" | "failu
 
 export default function Contact() {
   const [formState, setFormState] = useState<FormState>("default");
+  const [failureMessage, setFailureMessage] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -26,6 +27,7 @@ export default function Contact() {
       return;
     }
 
+    setFailureMessage("");
     setFormState("loading");
 
     try {
@@ -36,10 +38,15 @@ export default function Contact() {
         },
         body: JSON.stringify(formData),
       });
-      const result = await response.json();
+      const result: { success?: boolean; error?: string } =
+        await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.error || "Failed to send enquiry.");
+        setFailureMessage(
+          result.error || "Failed to send enquiry. Please try again.",
+        );
+        setFormState("failure");
+        return;
       }
 
       setFormState("success");
@@ -53,6 +60,9 @@ export default function Contact() {
       });
     } catch (error) {
       console.error("Contact form error:", error);
+      setFailureMessage(
+        "Could not reach the email service. Please try again or contact us using WhatsApp or phone.",
+      );
       setFormState("failure");
     }
   };
@@ -100,7 +110,8 @@ export default function Contact() {
                     Transmission Error
                   </div>
                   <p className="mt-1 text-xs sm:text-sm text-red-700">
-                    Unable to send enquiry automatically. Please connect with us directly on WhatsApp or phone call.
+                    {failureMessage ||
+                      "Unable to send enquiry automatically. Please connect with us directly on WhatsApp or phone call."}
                   </p>
                 </div>
               )}

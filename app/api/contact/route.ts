@@ -5,10 +5,13 @@ export async function POST(request: Request) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
     const contactEmail = process.env.CONTACT_EMAIL;
+    const fromEmail =
+      process.env.RESEND_FROM_EMAIL ||
+      "GENZ UV Website <onboarding@resend.dev>";
 
     if (!apiKey || !contactEmail) {
       return NextResponse.json(
-        { error: "Email configuration is missing." },
+        { error: "Email configuration is missing. Set RESEND_API_KEY and CONTACT_EMAIL." },
         { status: 500 },
       );
     }
@@ -58,7 +61,7 @@ export async function POST(request: Request) {
 
     const resend = new Resend(apiKey);
     const { data, error } = await resend.emails.send({
-      from: "GENZ UV Website <onboarding@resend.dev>",
+      from: fromEmail,
       to: [contactEmail],
       subject: `New Enquiry: ${fullName}`,
       replyTo: email || undefined,
@@ -79,7 +82,10 @@ ${projectDetails || "Not provided"}
       console.error("Resend error:", error);
 
       return NextResponse.json(
-        { error: "Unable to send your enquiry. Please try again." },
+        {
+          error:
+            "Resend could not deliver this enquiry. Check that RESEND_FROM_EMAIL uses a verified Resend domain and that your Resend account can send to CONTACT_EMAIL.",
+        },
         { status: 502 },
       );
     }

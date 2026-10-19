@@ -31,11 +31,7 @@ export const metadata: Metadata = {
   // FIXED: Changed to matching 'www.' subdomain chosen by Googlebot
   metadataBase: new URL("https://www.genzuv.in"),
 
-  openGraph:{
-    type:"website",
-    url:"https://www.genzuv.in",
-    siteName:" GENZ UV",
-  },
+  
   title: {
     default: "GENZ UV | Best Digital Marketing & Premium AI Automation",
     template: "%s | GENZ UV"

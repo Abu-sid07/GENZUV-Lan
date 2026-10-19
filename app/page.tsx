@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/ui/navbar";
 import Hero from "@/components/ui/hero";
 import About from "@/components/ui/About";
@@ -10,6 +11,13 @@ import Team from "@/components/ui/team";
 import FAQ from "@/components/ui/FAQ";
 import Contact from "@/components/ui/contact";
 import Footer from "@/components/ui/footer";
+
+// Force Google to treat www.genzuv.in as the primary source of truth
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (

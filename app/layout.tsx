@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   
   // High-value search terms mapped directly to your user targets
   keywords: [
-    "genzuv",
+    "genz uv",
     "best website services",
     "best AI marketing agency",
     "trusted AI automation agency",

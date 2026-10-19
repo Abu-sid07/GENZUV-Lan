@@ -3,6 +3,7 @@ import { DM_Sans, Fraunces, DM_Serif_Display } from "next/font/google";
 import SmoothScroll from "@/components/ui/smooth-scroll";
 import "lenis/dist/lenis.css";
 import "./globals.css";
+import head_logo from '@/src/assests/genz_uv_logo.png';
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -22,6 +23,8 @@ const dmSerif = DM_Serif_Display({
   weight: ["400"],
 });
 
+
+
 // Optimized description targeting both premium quality and budget variations
 const seoDescription = 
   "Get the best premium quality digital marketing and affordable AI automation systems built for measurable revenue, WhatsApp leads, and business growth.";
@@ -33,6 +36,9 @@ export const metadata: Metadata = {
     template: "%s | GENZ UV"
   },
   description: seoDescription,
+  
+
+
   
   // High-value search terms mapped directly to your user targets
   keywords: [
@@ -82,7 +88,11 @@ export const metadata: Metadata = {
     description: seoDescription,
     images: ["/Logo.jpeg"],
   },
+
+  
 };
+
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

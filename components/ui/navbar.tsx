@@ -60,7 +60,7 @@ export default function Navbar() {
             alt="GENZ UV logo"
             width={48}
             height={48}
-            className="h-11 w-11 rounded-lg object-cover shadow-sm"
+            className="h-15 w-15 rounded-lg  shadow-sm bg-black"
             priority
           />
           <span className="flex flex-col items-start leading-none">

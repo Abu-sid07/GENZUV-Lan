@@ -22,11 +22,41 @@ const dmSerif = DM_Serif_Display({
   weight: ["400"],
 });
 
+// Optimized description targeting both premium quality and budget variations
+const seoDescription = 
+  "Get the best premium quality digital marketing and affordable AI automation systems built for measurable revenue, WhatsApp leads, and business growth.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://genzuv.in"),
-  title: "GENZ UV | Digital Marketing & AI Automation",
-  description:
-    "Digital marketing and AI automation for businesses that want more enquiries on WhatsApp and calls.",
+  title: {
+    default: "GENZ UV | Best Digital Marketing & Premium AI Automation",
+    template: "%s | GENZ UV"
+  },
+  description: seoDescription,
+  
+  // High-value search terms mapped directly to your user targets
+  keywords: [
+  "genzuv",
+  "best website services",
+  "best AI marketing agency",
+  "trusted AI automation agency",
+  "top rated WhatsApp marketing agency",
+  "fast lead generation agency",
+  "premium growth marketing agency",
+  "reliable sales automation company",
+  "best Meta ads agency",
+  "high quality website development",
+  "trusted Google ads expert",
+  "fast WhatsApp funnel setup",
+  "best B2B marketing agency",
+  "top ROI marketing agency",
+  "results driven digital marketing",
+  "proven lead generation systems"
+]
+
+,
+
+  
   icons: {
     icon: "/Logo.jpeg",
     apple: "/Logo.jpeg",
@@ -35,9 +65,8 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://genzuv.in",
     siteName: "GENZ UV",
-    title: "GENZ UV | Digital Marketing & AI Automation",
-    description:
-      "Digital marketing and AI automation for businesses that want more enquiries on WhatsApp and calls.",
+    title: "GENZ UV | Best Digital Marketing & Premium AI Automation",
+    description: seoDescription,
     images: [
       {
         url: "/Logo.jpeg",
@@ -49,14 +78,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GENZ UV | Digital Marketing & AI Automation",
-    description:
-      "Digital marketing and AI automation for businesses that want more enquiries on WhatsApp and calls.",
+    title: "GENZ UV | Best Digital Marketing & Premium AI Automation",
+    description: seoDescription,
     images: ["/Logo.jpeg"],
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"

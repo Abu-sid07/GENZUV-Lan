@@ -55,7 +55,7 @@ const testimonials: Testimonial[] = [
   {
     text: "TThe elegant interface and engaging animations enhance learning, while clear navigation makes finding courses incredibly easy.",
     image: "/feedback/William%20Richard%20Forbish.jpg",
-    name: "Khaja Sir",
+    name: "S.M Khaja Mohideen",
     role: "English Fluency Guide",
   },
   {
@@ -67,7 +67,7 @@ const testimonials: Testimonial[] = [
   {
     text: "The clean layout makes every course easy to discover, and the seamless registration process creates a delightful experience.",
     image: "/feedback/812266482822759492.jpg",
-    name: "Abdullah",
+    name: "Ahmed Rizwan",
     role: "Current Student",
   },
   {
@@ -79,13 +79,13 @@ const testimonials: Testimonial[] = [
   {
     text: "Beautiful UI and smooth animations create an engaging experience, while the simple enrollment process makes registration effortless.",
     image: "/feedback/William%20Richard%20Forbish.jpg",
-    name: "Kabeer Sir",
+    name: "Mr.Kabeer",
     role: "Academy Coordinator",
   },
   {
     text: "The organized layout and attractive design make course details easy to understand, creating a smooth registration experience.",
     image: "/feedback/Image%20Icon%20Male%20_%20Evolve%20Tradings%20Private%20Limited%20(India)%20_%20RRK%20Digiverse.jpg",
-    name: "Ahamed Rizwan",
+    name: "Abdullah",
     role: "Student",
   },
   {
@@ -97,7 +97,7 @@ const testimonials: Testimonial[] = [
   {
     text: "Beautiful visuals and seamless interactions create a polished experience, making course discovery and enrollment simple and enjoyable.",
     image: "/feedback/802344489885222663.jpg",
-    name: "mohammed Haneef",
+    name: "Mohamed Haneef",
     role: "English professor",
   },
 ];

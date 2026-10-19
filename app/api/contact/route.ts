@@ -11,8 +11,8 @@ export async function POST(request: Request) {
 
     if (!apiKey || !contactEmail) {
       return NextResponse.json(
-        { error: "Email configuration is missing. Set RESEND_API_KEY and CONTACT_EMAIL." },
-        { status: 500 },
+        { error : "  Email configuration is missing. Set RESEND_API_KEY and CONTACT_EMAIL .  " },
+        { status : 500 },
       );
     }
 

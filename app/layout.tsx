@@ -29,7 +29,6 @@ const seoDescription =
   "Get the best premium quality digital marketing and affordable AI automation systems built for measurable revenue, WhatsApp leads, and business growth.";
 
 export const metadata: Metadata = {
-  // FIXED: Changed to matching 'www.' subdomain chosen by Googlebot
   metadataBase: new URL("https://www.genzuv.in"),
 
   
@@ -65,7 +64,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://www.genzuv.in", // FIXED: Updated matching URL string
+    url: "https://www.genzuv.in/",
     siteName: "GENZ UV",
     title: "GENZ UV | Best Digital Marketing & Premium AI Automation",
     description: seoDescription,

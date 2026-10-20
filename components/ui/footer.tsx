@@ -105,7 +105,7 @@ export default function Footer() {
             </h5>
             <div className="mt-4 flex flex-col space-y-3 text-xs">
               <a
-                href="https://genzuv.in"
+                href="https://www.genzuv.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 text-[#A8A49C] transition-colors hover:text-white"

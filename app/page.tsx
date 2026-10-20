@@ -20,7 +20,7 @@ import FAQ from "@/components/ui/FAQ";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://www.genzuv.in",
+    canonical: "https://www.genzuv.in/",
   },
 };
 

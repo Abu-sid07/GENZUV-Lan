@@ -43,7 +43,7 @@ export default function Team() {
             <div className="mt-4 flex items-center justify-center gap-2.5">
               {/* Website */}
               <a
-                href="https://genzuv.in"
+                href="https://www.genzuv.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Website"

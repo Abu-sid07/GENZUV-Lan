@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces, DM_Serif_Display } from "next/font/google";
+import { Analytics } from '@vercel/analytics/next';
 import SmoothScroll from "@/components/ui/smooth-scroll";
 import "lenis/dist/lenis.css";
 import "./globals.css";
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         <SmoothScroll>{children}</SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );

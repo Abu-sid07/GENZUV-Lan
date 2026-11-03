@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces, DM_Serif_Display } from "next/font/google";
 import SmoothScroll from "@/components/ui/smooth-scroll";
+import Navbar from "@/components/ui/navbar";
+import Footer from "@/components/ui/footer";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import head_logo from '@/src/assests/genz_uv_logo.png';
@@ -28,17 +30,12 @@ const seoDescription =
   "Get the best premium quality digital marketing and affordable AI automation systems built for measurable revenue, WhatsApp leads, and business growth.";
 
 export const metadata: Metadata = {
-  // FIXED: Changed to matching 'www.' subdomain chosen by Googlebot
   metadataBase: new URL("https://www.genzuv.in"),
-
-  
   title: {
     default: "GENZ UV | Best Digital Marketing & Premium AI Automation",
     template: "%s | GENZ UV"
   },
   description: seoDescription,
-  
-  // High-value search terms mapped directly to your user targets
   keywords: [
     "genz uv",
     "best website services",
@@ -57,14 +54,13 @@ export const metadata: Metadata = {
     "results driven digital marketing",
     "proven lead generation systems"
   ],
-
   icons: {
     icon: "/Logo.jpeg",
     apple: "/Logo.jpeg",
   },
   openGraph: {
     type: "website",
-    url: "https://www.genzuv.in", // FIXED: Updated matching URL string
+    url: "https://www.genzuv.in",
     siteName: "GENZ UV",
     title: "GENZ UV | Best Digital Marketing & Premium AI Automation",
     description: seoDescription,
@@ -92,7 +88,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${dmSans.variable} ${fraunces.variable} ${dmSerif.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <Navbar />
+          {/* Main takes full remaining space pushing footer down seamlessly */}
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

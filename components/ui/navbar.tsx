@@ -1,158 +1,250 @@
+
 "use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Growth System", href: "#growth" },
-  { name: "Industries", href: "#industries" },
-  { name: "Portfolio", href: "#portfolio" },
-  // { name: "Blog", href: "#blog" },
-  { name: "FAQ", href: "#faq" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Growth System", href: "/growth" },
+  { name: "Industries", href: "/industries" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Testimonials", href: "/testimonials" },
+  { name: "Contact", href: "/contact" },
+  { name: "Career", href: "/career" },
 ];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeHref, setActiveHref] = useState("#home");
+  const [activeHref, setActiveHref] = useState("/");
+  const pathname = usePathname();
 
+  // Track active page and sections
   useEffect(() => {
-    const sections = NAV_LINKS.map((link) =>
-      document.querySelector<HTMLElement>(link.href)
-    ).filter((section): section is HTMLElement => section !== null);
+    if (pathname !== "/") {
+      setActiveHref(pathname);
+      return;
+    }
 
-    const updateActiveSection = () => {
-      const activationLine = 120;
-      const currentSection = sections.find((section) => {
-        const bounds = section.getBoundingClientRect();
-        return bounds.top <= activationLine && bounds.bottom > activationLine;
-      });
+    const sectionIds = NAV_LINKS
+      .filter((link) => link.href.startsWith("/#"))
+      .map((link) => link.href.replace("/#", ""));
 
-      if (currentSection?.id) {
-        setActiveHref(`#${currentSection.id}`);
-      } else if (window.scrollY < 120) {
-        setActiveHref("#home");
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          );
+
+        if (visibleSections.length > 0) {
+          setActiveHref(`/#${visibleSections[0].target.id}`);
+        }
+      },
+      {
+        rootMargin: "-100px 0px -65% 0px",
+        threshold: [0, 0.1, 0.25, 0.5],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    if (window.scrollY < 100) {
+      setActiveHref("/");
+    }
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  // Close mobile menu when navigating
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Close mobile menu on Escape
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
       }
     };
 
-    updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
-    window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/" && activeHref === "/";
+    if (href.startsWith("/#")) return pathname === "/" && activeHref === href;
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 w-full bg-[#FAF8F5]">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 sm:px-10 lg:px-14">
-        {/* Brand / Logo */}
-        <a href="#" className="flex items-center gap-3 select-none">
-          <Image
-            src="/Logo-main.png"
-            alt="GENZ UV logo"
-            width={48}
-            height={48}
-            className="h-15 w-15 rounded-lg  shadow-sm bg-black"
-            priority
-          />
-          <span className="flex flex-col items-start leading-none">
-            <span className="font-serif text-2xl font-medium tracking-tight text-[#171717] sm:text-[26px]">
-              GENZ UV
-            </span>
-            <span className="mt-1 text-[9px] font-bold tracking-[0.25em] text-[#5252CF] uppercase">
-              ULTIMATE VALUES
-            </span>
-          </span>
-        </a>
+      <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-[#D9D3C5]/70 bg-[#FAF8F5]/95 backdrop-blur-md">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 sm:px-10 lg:px-14">
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden items-center gap-5 xl:gap-7 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              aria-current={activeHref === link.href ? "location" : undefined}
-              className={`relative py-1 text-[13.5px] font-medium transition-colors duration-150 ${
-                activeHref === link.href
-                  ? "text-[#171717]"
-                  : "text-neutral-700 hover:text-neutral-950"
-              }`}
-            >
-              {link.name}
-              {activeHref === link.href && (
-                <span className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full bg-black" />
-              )}
-            </a>
-          ))}
-        </nav>
+          {/* Brand */}
+          <Link
+            href="/"
+            className="group flex shrink-0 select-none items-center gap-3"
+            aria-label="GENZ UV Home"
+          >
+            <Image
+              src="/Logo-main.png"
+              alt="GENZ UV logo"
+              width={48}
+              height={48}
+              priority
+              className="h-12 w-12 rounded-lg bg-black object-contain shadow-sm transition-transform duration-300 group-hover:scale-105"
+            />
 
-        {/* Mobile Hamburger Button */}
-        <div className="flex items-center lg:hidden">
+            <span className="group flex flex-col items-start leading-none">
+              <span className="group font-serif text-2xl font-medium tracking-tight text-[#171717] sm:text-[26px]">
+                <span>GEN</span><span className='text-slate-800'>Z</span>
+                <span className="text-blue-900/70 group-hover:text-shadow-slate-800">UV</span>
+              </span>
+
+              <span className="mt-1.5 text-[9px] font-bold uppercase tracking-[0.25em] text-[#5252CF]">
+                Ultimate Values
+              </span>
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav
+            aria-label="Main navigation"
+            className="hidden items-center gap-4 lg:flex xl:gap-6"
+          >
+            {NAV_LINKS.map((link) => {
+              const active = isActive(link.href);
+
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  aria-current={active ? "location" : undefined}
+                  className={`group relative whitespace-nowrap py-2 text-[12px] font-medium transition-colors duration-200 xl:text-[13px] ${
+                    active
+                      ? "text-[#171717]"
+                      : "text-neutral-600 hover:text-[#252E40]"
+                  }`}
+                >
+                  {link.name}
+
+                  <span
+                    className={`absolute bottom-0 left-0 h-[2px] rounded-full bg-[#252E40] transition-all duration-300 ${
+                      active
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Mobile Menu Toggle */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-neutral-700 hover:bg-neutral-200/50 focus:outline-none"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#D9D3C5] text-[#252E40] transition-colors hover:bg-[#EDE9E1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#252E40] lg:hidden"
             aria-expanded={mobileMenuOpen}
-            aria-label="Toggle navigation menu"
+            aria-controls="mobile-navigation"
+            aria-label={
+              mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
           >
             <svg
-              className="h-6 w-6"
+              className="h-5 w-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               {mobileMenuOpen ? (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
+                  strokeWidth={1.8}
+                  d="M6 6l12 12M18 6L6 18"
                 />
               ) : (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
+                  strokeWidth={1.8}
+                  d="M4 7h16M4 12h16M4 17h16"
                 />
               )}
             </svg>
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="border-b border-[#E5E0D8] bg-[#FAF8F5] px-6 py-4 shadow-lg lg:hidden">
-          <nav className="flex flex-col space-y-3">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                aria-current={activeHref === link.href ? "location" : undefined}
-                className={`relative w-fit py-1 text-sm font-medium ${
-                  activeHref === link.href
-                    ? "font-semibold text-[#171717] after:absolute after:right-0 after:bottom-0 after:left-0 after:h-[2px] after:bg-black"
-                    : "text-neutral-700 hover:text-neutral-900"
-                }`}
-              >
-                {link.name}
-              </a>
-            ))}
+        {/* Mobile Navigation */}
+        <div
+          id="mobile-navigation"
+          className={`grid overflow-hidden border-t border-[#D9D3C5]/70 bg-[#FAF8F5] transition-[grid-template-rows,opacity] duration-300 ease-in-out lg:hidden ${
+            mobileMenuOpen
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          }`}
+          aria-hidden={!mobileMenuOpen}
+          inert={!mobileMenuOpen}
+        >
+          <nav className="min-h-0 overflow-hidden px-6 sm:px-10">
+            <div className="mx-auto flex max-w-[1400px] flex-col py-4">
+              {NAV_LINKS.map((link, index) => {
+                const active = isActive(link.href);
+
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    aria-current={active ? "location" : undefined}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between border-b border-[#E5E0D8] py-3.5 text-sm transition-colors duration-200 ${
+                      active
+                        ? "font-semibold text-[#171717]"
+                        : "text-neutral-600 hover:text-[#252E40]"
+                    }`}
+                  >
+                    <span>{link.name}</span>
+
+                    <span
+                      className={`text-xs transition-transform duration-200 ${
+                        active
+                          ? "translate-x-0 text-[#252E40]"
+                          : "-translate-x-1 text-neutral-400"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
           </nav>
         </div>
-      )}
       </header>
-      <div aria-hidden="true" className="h-24 shrink-0" />
+
+      {/* Header spacing */}
+      <div aria-hidden="true" className="h-[84px] shrink-0" />
     </>
   );
 }

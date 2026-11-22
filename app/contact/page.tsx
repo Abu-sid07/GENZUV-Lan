@@ -57,7 +57,7 @@ export default function Contact() {
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [honeypot, setHoneypot] = useState("");
   const [charCount, setCharCount] = useState(0);
-  const successTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [formData, setFormData] = useState(INITIAL_FORM);
 
@@ -65,7 +65,11 @@ export default function Contact() {
   useEffect(() => {
     if (formState === "success") {
       successTimerRef.current = setTimeout(() => setFormState("idle"), 8000);
-      return () => clearTimeout(successTimerRef.current);
+      return () => {
+        if (successTimerRef.current !== null) {
+          clearTimeout(successTimerRef.current);
+        }
+      };
     }
   }, [formState]);
 
